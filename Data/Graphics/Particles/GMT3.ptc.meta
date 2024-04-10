@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{CB789C66FF642BBD}Data/Graphics/Particles/GMT3.ptc"
+ Author "desktop-b8pfhra"
+ ChangeDate -1356304246
+ Configurations {
+  PTCResourceClass PC {
+  }
+  PTCResourceClass XBOX_ONE : PC {
+  }
+  PTCResourceClass PS4 : PC {
+  }
+  PTCResourceClass LINUX : PC {
+  }
+ }
+}

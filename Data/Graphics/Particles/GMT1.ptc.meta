@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{256C4D771621F55D}Data/Graphics/Particles/GMT1.ptc"
+ Author "desktop-b8pfhra"
+ ChangeDate -1423413110
+ Configurations {
+  PTCResourceClass PC {
+  }
+  PTCResourceClass XBOX_ONE : PC {
+  }
+  PTCResourceClass PS4 : PC {
+  }
+  PTCResourceClass LINUX : PC {
+  }
+ }
+}

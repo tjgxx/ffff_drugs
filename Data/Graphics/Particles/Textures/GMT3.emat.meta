@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{832F48E72F8878E1}Data/Graphics/Particles/Textures/GMT3.emat"
+ Author "desktop-b8pfhra"
+ ChangeDate -752324470
+ Configurations {
+  EMATResourceClass PC {
+  }
+  EMATResourceClass XBOX_ONE : PC {
+  }
+  EMATResourceClass PS4 : PC {
+  }
+  EMATResourceClass LINUX : PC {
+  }
+ }
+}
