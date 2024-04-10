@@ -3,4 +3,5 @@ Particle {
  Color 0.251 0.251 0.251 1
  Diffuse 0.251 0.251 0.251 1
  Emissive 1 1 1 1
+ BlendMode Additive_AlphaModulate
 }

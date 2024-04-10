@@ -37,10 +37,15 @@ class CfgMods
 		version = "1";
 		extra = 0;
 		type = "mod";
-		dependencies[]={"World"};
+		dependencies[]={"Game", "World"};
 		
 		class defs
 		{
+			class gameScriptModule
+            {
+                value = "";
+                files[] = {"ffff_drugs/Scripts/3_Game"};
+			};
             class worldScriptModule
             {
                 value = "";
