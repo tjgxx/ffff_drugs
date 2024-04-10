@@ -1,0 +1,10 @@
+Particle {
+ AlbedoMap "{2EABF280ED82D8E5}ArtefactsXZone/graphics/particles/textures/XZ9.edds" 
+ Color 0.1569 0.2745 0.6235 1
+ Diffuse 0.1569 0.2745 0.6235 1
+ Ambient 0.1569 0.2745 0.6235 1
+ Emissive 0.1569 0.2745 0.6235 1
+ BlendMode Additive_AlphaModulate
+ TileU 4
+ TileV 4
+}
