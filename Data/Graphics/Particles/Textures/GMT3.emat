@@ -1,0 +1,6 @@
+Particle {
+ AlbedoMap "{E594E602D010E9EC}Data/Graphics/Particles/Textures/GMT3.edds" 
+ Color 0.251 0.251 0.251 1
+ Diffuse 0.251 0.251 0.251 1
+ Emissive 1 1 1 1
+}

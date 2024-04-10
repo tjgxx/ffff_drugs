@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{E594E602D010E9EC}Data/Graphics/Particles/Textures/GMT3.edds"
+ Author "desktop-b8pfhra"
+ ChangeDate 165523593
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "GMT3.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}
