@@ -1,6 +1,7 @@
 Particle {
- AlbedoMap "{4F7488D962400F97}Data/Graphics/Particles/Textures/GMT1.edds" 
- Emissive 1 1 1 1
- AlphaTest 0
+ AlbedoMap "{4F7488D962400F97}ffff_drugs/Data/Graphics/Particles/Textures/GMT1.edds" 
+ Color 0.4863 0.4863 0.4863 1
+ Emissive 1 1 1 0
  BlendMode Additive_AlphaModulate
+ Softness 1
 }

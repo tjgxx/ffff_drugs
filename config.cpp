@@ -20,6 +20,8 @@ class CfgPatches
 			"CP_Plants",
 			"CP_Bags",
 			"CannabisPlus_Joint",
+			"ffff_items",
+			"sVisual"
 		};
 	};
 };
@@ -37,15 +39,15 @@ class CfgMods
 		version = "1";
 		extra = 0;
 		type = "mod";
-		dependencies[]={ "World"};
+		dependencies[]={"Game", "World"};
 		
 		class defs
 		{
-			// class gameScriptModule
-            // {
-            //     value = "";
-            //     files[] = {"ffff_drugs/Scripts/3_Game"};
-			// };
+			class gameScriptModule
+            {
+                value = "";
+                files[] = {"ffff_drugs/Scripts/3_Game"};
+			};
             class worldScriptModule
             {
                 value = "";
@@ -145,35 +147,37 @@ class CfgVehicles
 			"ffff_drugs\Data\Textures\CP_Overrides\GlowMushroom_Brick_Co.paa"
 		};
 	};
-	class FFFF_Glow_Mushrooms_Cigarette_Pack: ffff_cannabis_cigarette_pack
-	{
-		displayName="Glow Mushroom Cigarettes";
-		descriptionShort="A pack of Glow Mushroom Cigarettes.";
-		hiddenSelectionsTextures[]=
-		{
-			"ffff_drugs\Data\Textures\CP_Overrides\GlowMushroom_CigarettePack_Co.paa",
-			"ffff_drugs\Data\Textures\CP_Overrides\GlowMushroom_CigarettePack_Co.paa"
-		};
-	};
-	class FFFF_Glow_Mushrooms_Joint: ffff_cannabis_joint
-	{
-		displayName="Glow Mushroom Joint";
-		descriptionShort="A joint made out of finest Glow Mushrooms";
-		hiddenSelections[]=
-		{
-			"zbytek"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"ffff_drugs\Data\Textures\CP_Overrides\GlowMushroom_Joint_Co.paa"
-		};
-	};
+	//dumb
+	// class FFFF_Glow_Mushrooms_Cigarette_Pack: ffff_cannabis_cigarette_pack
+	// {
+	// 	displayName="Glow Mushroom Cigarettes";
+	// 	descriptionShort="A pack of Glow Mushroom Cigarettes.";
+	// 	hiddenSelectionsTextures[]=
+	// 	{
+	// 		"ffff_drugs\Data\Textures\CP_Overrides\GlowMushroom_CigarettePack_Co.paa",
+	// 		"ffff_drugs\Data\Textures\CP_Overrides\GlowMushroom_CigarettePack_Co.paa"
+	// 	};
+	// };
+	//dumb
+	// class FFFF_Glow_Mushrooms_Joint: ffff_cannabis_joint
+	// {
+	// 	displayName="Glow Mushroom Joint";
+	// 	descriptionShort="A joint made out of finest Glow Mushrooms";
+	// 	hiddenSelections[]=
+	// 	{
+	// 		"zbytek"
+	// 	};
+	// 	hiddenSelectionsTextures[]=
+	// 	{
+	// 		"ffff_drugs\Data\Textures\CP_Overrides\GlowMushroom_Joint_Co.paa"
+	// 	};
+	// };
 
 	// custom mushrooms
-	class AgaricusMushroom;
-	class FFFF_Glow_Mushroom_Base : AgaricusMushroom
+	class Edible_Base;
+	class FFFF_Glow_Mushroom_Base : Edible_Base
 	{
-		scope=2;
+		scope=0;
 		displayName="Glowing Mushroom";
 		descriptionShort="Some sort of mutated fungus...";
 		model="ffff_drugs\Data\Single\FFFF_Glow_Mushroom_Single.p3d";
@@ -183,29 +187,24 @@ class CfgVehicles
 		varQuantityMin=0;
 		varQuantityMax=150;
 		stackedUnit="";
-		inventorySlot[]=
-		{
-			"Ingredient",
-			"DirectCookingA",
-			"DirectCookingB",
-			"DirectCookingC",
-			"SmokingA",
-			"SmokingB",
-			"SmokingC",
-			"SmokingD"
-		};
 		hiddenSelections[]=
 		{
-			"cs_raw",
-			"cs_dried"
+			"camo1",
+			"camo2",
+			"camo3"
 		};
+		class Nutrition
+        {
+            fullnessIndex=2;
+            energy=120;
+            water=195;
+            nutritionalIndex=1;
+            toxicity=0;
+			agents=16384;
+        };
 		hiddenSelectionsTextures[]=
 		{
 			"ffff_drugs\Data\Textures\ffff_glow_mushroom_raw_co.paa",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_baked_co.paa",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_boiled_co.paa",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_dried_co.paa",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_burnt_co.paa"
 		};
 		class DamageSystem
         {
@@ -218,50 +217,6 @@ class CfgVehicles
                 };
             };
         };
-		class AnimationSources: FoodAnimationSources {};
-		class Food
-		{
-			class FoodStages
-			{
-				class Raw
-				{
-					visual_properties[]={0,0,0};
-					nutrition_properties[]={2.5,120,195,1,0};
-					cooking_properties[]={0,0};
-				};
-				class Rotten
-				{
-					visual_properties[]={-1,-1,5};
-					nutrition_properties[]={2,90,105,1,0,16};
-					cooking_properties[]={0,0};
-				};
-				class Baked
-				{
-					visual_properties[]={0,1,1};
-					nutrition_properties[]={1.75,300,500,1,0};
-					cooking_properties[]={70,35};
-				};
-				class Boiled
-				{
-					visual_properties[]={0,2,2};
-					nutrition_properties[]={1.5,250,600,1,0};
-					cooking_properties[]={70,45};
-				};
-				class Dried
-				{
-					visual_properties[]={1,3,3};
-					nutrition_properties[]={0.75,250,105,1,0};
-					cooking_properties[]={70,30,80};
-				};
-				class Burned
-				{
-					visual_properties[]={0,4,4};
-					nutrition_properties[]={2,90,90,1,0};
-					cooking_properties[]={100,20};
-				};
-			};
-			class FoodStageTransitions: MushroomsStageTransitions {};
-		};
 		class AnimEvents
 		{
 			class SoundWeapon
@@ -297,42 +252,42 @@ class CfgVehicles
 
 	class FFFF_Glow_Mushroom_Green : FFFF_Glow_Mushroom_Base
 	{
+		scope=2;
+		hiddenSelections[]=
+		{
+			"camo1"
+		};
 		hiddenSelectionsMaterials[]=
 		{
 			"ffff_drugs\Data\Textures\ffff_glow_mushroom_green.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_baked.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_boiled.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_dried.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_burnt.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_rotten.rvmat"
 		};
 	};
 
 	
 	class FFFF_Glow_Mushroom_Blue : FFFF_Glow_Mushroom_Base
 	{
+		scope=2;
+		hiddenSelections[]=
+		{
+			"camo2"
+		};
 		hiddenSelectionsMaterials[]=
 		{
 			"ffff_drugs\Data\Textures\ffff_glow_mushroom_blue.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_baked.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_boiled.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_dried.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_burnt.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_rotten.rvmat"
 		};
 	};
 
 	
 	class FFFF_Glow_Mushroom_Purple : FFFF_Glow_Mushroom_Base
 	{
+		scope=2;
+		hiddenSelections[]=
+		{
+			"camo3"
+		};
 		hiddenSelectionsMaterials[]=
 		{
 			"ffff_drugs\Data\Textures\ffff_glow_mushroom_purple.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_baked.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_boiled.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_dried.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_burnt.rvmat",
-			"ffff_drugs\Data\Textures\ffff_glow_mushroom_rotten.rvmat"
 		};
 	};
 

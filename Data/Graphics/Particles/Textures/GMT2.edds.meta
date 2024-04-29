@@ -1,7 +1,7 @@
 MetaFileClass {
- Name "{119CA19ADDCD8198}Data/Graphics/Particles/Textures/GMT2.edds"
+ Name "{119CA19ADDCD8198}ffff_drugs/Data/Graphics/Particles/Textures/GMT2.png"
  Author "desktop-b8pfhra"
- ChangeDate -785878902
+ ChangeDate -515739510
  Configurations {
   PNGResourceClass PC {
    SourceFile "GMT2.png"

@@ -1,7 +1,6 @@
 Particle {
- AlbedoMap "{119CA19ADDCD8198}Data/Graphics/Particles/Textures/GMT2.edds" 
- Color 0.5216 0.5216 0.5216 1
- Diffuse 0.5216 0.5216 0.5216 1
- Emissive 1 1 1 1
+ AlbedoMap "{119CA19ADDCD8198}ffff_drugs/Data/Graphics/Particles/Textures/GMT2.edds" 
+ Color 0.2667 0.2667 0.2667 1
+ Emissive 1 1 1 0
  BlendMode Additive_AlphaModulate
 }

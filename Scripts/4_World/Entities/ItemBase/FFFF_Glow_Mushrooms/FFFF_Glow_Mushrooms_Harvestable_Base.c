@@ -17,6 +17,10 @@ class FFFF_Glow_Mushrooms_Harvestable_Green : FFFF_Glow_Mushrooms_Harvestable_Ba
 
     void ~FFFF_Glow_Mushrooms_Harvestable_Green()
     {
+        if (m_ParticleEfx) {
+            m_ParticleEfx.Stop();
+        }
+
         if (m_Light) 
         { 
             m_Light.FadeOut();
@@ -53,12 +57,14 @@ class FFFF_Glow_Mushrooms_Harvestable_Blue : FFFF_Glow_Mushrooms_Harvestable_Bas
         {
             m_Light = MushroomLightBlue.Cast( ScriptedLightBase.CreateLight(MushroomLightBlue, "0 0 0", 0.08) );
             m_Light.AttachOnMemoryPoint(this, "lightPoint");
-            m_ParticleEfx = ParticleManager.GetInstance().PlayOnObject(ParticleList.FFFF_Glow_Mushroom_Particle_Blue, this, Vector(0, 0.5, 0));
+            m_ParticleEfx = Particle.PlayOnObject(ParticleList.FFFF_Glow_Mushroom_Particle_Blue, this);
         }
     }
 
     void ~FFFF_Glow_Mushrooms_Harvestable_Blue()
     {
+        m_ParticleEfx.Stop();
+
         if (m_Light) 
         { 
             m_Light.FadeOut();
@@ -101,6 +107,8 @@ class FFFF_Glow_Mushrooms_Harvestable_Purple : FFFF_Glow_Mushrooms_Harvestable_B
 
     void ~FFFF_Glow_Mushrooms_Harvestable_Purple()
     {
+        m_ParticleEfx.Stop();
+        
         if (m_Light) 
         { 
             m_Light.FadeOut();
