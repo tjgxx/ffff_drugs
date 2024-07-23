@@ -11,9 +11,6 @@ class TrippingMushroomsMdfr: ModifierBase
     static const float EVENT_INTERVAL_MIN = 24;
 	static const float EVENT_INTERVAL_MAX = 36;
 
-    // static const int YAWN_OCCURRENCES_PER_HOUR_MIN = 60;
-	// static const int YAWN_OCCURRENCES_PER_HOUR_MAX = 120;
-
 	override void Init()
 	{
 		m_TrackActivatedTime = true;
@@ -21,19 +18,13 @@ class TrippingMushroomsMdfr: ModifierBase
 		m_ID 					= CustomModifiers.MDF_TRIPPING_MUSHROOM;
 		m_TickIntervalInactive 	= DEFAULT_TICK_TIME_INACTIVE;
 		m_TickIntervalActive 	= DEFAULT_TICK_TIME_ACTIVE_SHORT;
+		m_SyncID				= CustomModifierSyncIDs.MODIFIER_SYNC_TRIPPING_MUSHROOM;
         DisableActivateCheck();
 	}
 
     override bool ActivateCondition(PlayerBase player)
 	{
-		if	(player.GetSingleAgentCount(CustomAgents.TRIPPING_MUSHROOM) >= AGENT_THRESHOLD_ACTIVATE) 
-		{
-			return true;
-		}
-		else 
-		{
-			return false;
-		}
+		return true;
 	}
 
     override string GetDebugText()
@@ -41,20 +32,33 @@ class TrippingMushroomsMdfr: ModifierBase
 		return (m_Lifetime - GetAttachedTime()).ToString();
 	}
 	
-	override void OnActivate(PlayerBase player)
+	bool SecondarySymptomIsInQueue(PlayerBase player, int symptom_id)
 	{
-        if (player.GetModifiersManager().IsModifierActive(CustomModifiers.MDF_TRIPPING_MUSHROOM)) {
-		   player.GetSymptomManager().RemoveSecondarySymptom(CustomSymptomIDs.SYMPTOM_TRIPPING_MUSHROOMS);
-        }
-		player.GetSymptomManager().QueueUpSecondarySymptom(CustomSymptomIDs.SYMPTOM_TRIPPING_MUSHROOMS);
+		for (int i = 0; i < player.GetSymptomManager().m_SymptomQueueSecondary.Count();i++)
+		{
+			if ( player.GetSymptomManager().m_SymptomQueueSecondary.Get(i) && player.GetSymptomManager().m_SymptomQueueSecondary.Get(i).GetType() == symptom_id )
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 
     override void OnTick(PlayerBase player, float deltaTime)
     {
 		float m_TimeSpentHighMinusDelay = GetAttachedTime() - m_Delay;
-
+		
 		if (m_TimeSpentHighMinusDelay >= m_Delay)
 		{
+			if (!SecondarySymptomIsInQueue(player, CustomSymptomIDs.SYMPTOM_TRIPPING_MUSHROOMS))
+			{
+				if (player.GetModifiersManager().IsModifierActive(CustomModifiers.MDF_TRIPPING_MUSHROOM)) {
+					player.GetSymptomManager().RemoveSecondarySymptom(CustomSymptomIDs.SYMPTOM_TRIPPING_MUSHROOMS);
+				}
+				player.GetSymptomManager().QueueUpSecondarySymptom(CustomSymptomIDs.SYMPTOM_TRIPPING_MUSHROOMS);
+			}
+
 			m_TimeSinceLastEvent += deltaT;
 	
 			if ( m_TimeSinceLastEvent >= m_NextEvent )
@@ -84,9 +88,15 @@ class TrippingMushroomsMdfr: ModifierBase
 	{
 		this.OnActivate(player);
 	}
+
+	override void OnActivate(PlayerBase player)
+	{
+		player.m_IsOnShrooms = true;
+	}
 	
 	override void OnDeactivate(PlayerBase player)
 	{
+		player.m_IsOnShrooms = false;
 		player.GetSymptomManager().RemoveSecondarySymptom(CustomSymptomIDs.SYMPTOM_TRIPPING_MUSHROOMS);
 	}
 

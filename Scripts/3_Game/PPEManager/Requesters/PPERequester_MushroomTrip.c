@@ -10,7 +10,6 @@ class PPERequester_MushroomTrip : SPPEffectAnimated
 	override void onInit() 
 	{
 		setMotionBlurPower(1);
-		setBloom(10, 20, 10);
         setChromAber(0.025);
         setGodrays(1, 1, 1, 1, 1, 0, 0, 0);
         setRadialBlur(0, 0);

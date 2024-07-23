@@ -1,13 +1,13 @@
-/*modded class PlayerBase
+modded class PlayerBase extends ManBase
 {
-    
+    bool m_IsOnShrooms;
+    bool m_IsOnCocaine;
 
-    override void UpdateMovementInertia() 
+    override void Init()
     {
-        super.UpdateMovementInertia();
-        
-        
+        super.Init();
+
+        RegisterNetSyncVariableBool("m_IsOnShrooms");
+        RegisterNetSyncVariableBool("m_IsOnCocaine");
     }
 }
-
-*/

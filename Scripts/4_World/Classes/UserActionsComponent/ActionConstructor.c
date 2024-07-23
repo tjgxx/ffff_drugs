@@ -5,6 +5,10 @@ modded class ActionConstructor
         super.RegisterActions( actions );
 
         actions.Insert(ActionHarvestMushroom);
-        // actions.Insert(ActionConsumeDrug);
+        actions.Insert(ActionConsumeDrug);
+        actions.Insert(ActionInjectDrugSelf);
+        actions.Insert(ActionSnortDrug);
+
+        // actions.RemoveItem(ActionCPUseBagger);
     }
 }

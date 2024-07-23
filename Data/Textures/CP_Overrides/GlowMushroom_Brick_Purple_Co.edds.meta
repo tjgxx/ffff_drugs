@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{A31F399FFB32B377}ffff_drugs/Data/Textures/CP_Overrides/GlowMushroom_Brick__Purple_Co.edds"
+ Author "desktop-b8pfhra"
+ ChangeDate -1871007586
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "GlowMushroom_Brick__Purple_Co.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

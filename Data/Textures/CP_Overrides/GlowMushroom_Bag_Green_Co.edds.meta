@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{ABB257748D62FF28}ffff_drugs/Data/Textures/CP_Overrides/GlowMushroom_Bag_Green_Co.edds"
+ Author "desktop-b8pfhra"
+ ChangeDate -1665486690
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "GlowMushroom_Bag_Green_Co.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}
